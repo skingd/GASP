@@ -21,6 +21,15 @@ class AchievementModel{
     
     }
     
+    //Very bad query
+    public function getLockedAchievements($user_id){
+        return $this->db->query("
+         SELECT ach_name, ach_type, ach_desc, ach_image, ach_value, ach_creator
+        FROM achievements
+        ");
+    
+    }
+    
     //This retrieves data for the archive view. The main difference is that it displays only the selected
     //categories from the beginning of time
     public function scanProximity(){
