@@ -23,7 +23,11 @@ $long = $_POST['long'];
         if($result <= 0.50){
           //echo "I FOUND SOMETHING!";
 
-          $achievementModel->unlockAchievement($row['user_id'], $row['ach_id']);
+          $testUserId = 1;
+          //echo $row['user_id'];
+          echo "potato " . $row['ach_id'];
+
+          $achievementModel->unlockAchievement($testUserId, $row['ach_id']);
           echo "Achievement unlocked!";
         }
     }

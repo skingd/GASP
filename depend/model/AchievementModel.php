@@ -91,13 +91,13 @@ class AchievementModel{
 
      public function unlockAchievement($userId, $achId){
        $stmt = $this->db->prepare(
-           "INSERT INTO program_events (user_id, ach_id)
-            VALUES(:user_id, :ach_id)"
+           "INSERT INTO unlocked_achievements (user_id_ach, ach_id_unlocked)
+            VALUES(:user_id_ach, :ach_id_unlocked)"
        );
 
        //Bindings
-       $stmt->bindParam(':user_id', $userid);
-       $stmt->bindParam(':ach_id', $achId);
+       $stmt->bindParam(':user_id_ach', $userid);
+       $stmt->bindParam(':ach_id_unlocked', $achId);
 
        $stmt->execute();
 
