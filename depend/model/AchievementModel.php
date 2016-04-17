@@ -24,9 +24,10 @@ class AchievementModel{
     //Very bad query
     public function getLockedAchievements($user_id){
         return $this->db->query("
-         SELECT ach_name, ach_type, ach_desc, ach_image, ach_value, ach_creator
-        FROM achievements
-        ");
+         SELECT achievements.ach_id, achievements.ach_name, achievements.ach_type, achievements.ach_image, achievements.ach_value 
+FROM achievements, unlocked_achievements 
+WHERE achievements.ach_id != unlocked_achievements.ach_id_unlocked AND unlocked_achievements.user_id_ach = " . $user_id 
+        );
 
     }
 
@@ -48,24 +49,19 @@ class AchievementModel{
         ORDER BY program_events.event_date DESC");
     }
 
-    public function setEvents($userid, $eventname, $eventdescription, $eventdate, $eventcategory, $eventlink, $eventEnd, $eventBeginHour, $eventEndHour, $beginmeridiem, $endmeridiem){
+    public function setGPSAch($achName, $achType, $achDesc, $achImage, $achValue, $userName){
         $stmt = $this->db->prepare(
             "INSERT INTO program_events (event_author_id, event_title, event_date, event_body, event_category, event_link, eventend, eventbeginhour, eventendhour, beginmeridiem, endmeridiem)
-             VALUES(:event_author_id, :event_title, :event_date, :event_body, :event_category, :event_link, :eventend, :eventbeginhour, :eventendhour, :beginmeridiem, :endmeridiem)"
+             VALUES(:ach_name, :ach_type, :ach_desc, :ach_image, :ach_value, :ach_creator)"
         );
 
         //Bindings
-        $stmt->bindParam(':event_author_id', $userid);
-        $stmt->bindParam(':event_title', $eventname);
-        $stmt->bindParam(':event_date', $eventdate);
-        $stmt->bindParam(':event_body', $eventdescription);
-        $stmt->bindParam(':event_category', $eventcategory);
-        $stmt->bindParam(':event_link', $eventlink);
-        $stmt->bindParam(':eventend', $eventEnd);
-        $stmt->bindParam(':eventbeginhour', $eventBeginHour);
-        $stmt->bindParam(':eventendhour', $eventEndHour);
-        $stmt->bindParam(':beginmeridiem', $beginmeridiem);
-        $stmt->bindParam(':endmeridiem', $endmeridiem);
+        $stmt->bindParam(':ach_name', $achName);
+        $stmt->bindParam(':ach_type', $achType);
+        $stmt->bindParam(':ach_desc', $achDesc);
+        $stmt->bindParam(':ach_image', $achImage);
+        $stmt->bindParam(':ach_value', $achValue);
+        $stmt->bindParam(':ach_creator', $userName);
 
         $stmt->execute();
 
