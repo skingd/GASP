@@ -1,8 +1,8 @@
 <?php
 
 ?>
-
-<button class="btn btn-info" onclick="getLocation()">Scan Area</button>
+<br>
+<button class="btn btn-lg btn-info center-block" onclick="getLocation()">Scan Area</button>
 
 <p id="location"></p>
 <p id="newlocation"></p>
