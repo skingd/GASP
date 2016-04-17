@@ -12,16 +12,19 @@ $long = $_POST['long'];
     //echo $rowNum = $unlockedAchievementList->fetchColumn();
 
     foreach($gpsAchievements as $row){
-        
+
         $vec1 = pow(($row['trigger_latitude'] - $lat ),2);
         echo "Vec1" . $vec1 . "<br>";
         $vec2 = pow(($row['trigger_longitude'] - $long),2);
         echo "Vec2" . $vec2;
-        
+
         $result = sqrt(($vec1 + $vec2));
         echo "The Result Is: " + $result;
         if($result <= 0.50){
-            echo "I FOUND SOMETHING!";
+          //echo "I FOUND SOMETHING!";
+
+          $achievementModel->unlockAchievement($row['user_id'], $row['ach_id']);
+          echo "Achievement unlocked!";
         }
     }
 ?>
