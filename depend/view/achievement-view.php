@@ -1,17 +1,10 @@
 <?php
 
-
-
-
  echo '
- <div>
- <span> <a href="#" data-toggle="modal" data-target="#achInfo">
-        <img src="depend/images/' . $row['ach_image'] . '"</span></a>';
-        
-        
-        
-       
-        
+    <div class="thumbnail">
+    <div class="caption">' . $row['ach_name'] . '</div>
+        <a href="#" data-toggle="modal" data-target="#achInfo">
+        <img src="depend/images/' . $row['ach_image'] . '"></a>';
     
    echo '
    </div>
