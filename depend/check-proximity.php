@@ -12,7 +12,6 @@ $long = $_POST['long'];
     //echo $rowNum = $unlockedAchievementList->fetchColumn();
 
     foreach($gpsAchievements as $row){
-
         $vec1 = pow(($row['trigger_latitude'] - $lat ),2);
         echo "Vec1" . $vec1 . "<br>";
         $vec2 = pow(($row['trigger_longitude'] - $long),2);
@@ -25,10 +24,12 @@ $long = $_POST['long'];
 
           $testUserId = 1;
           //echo $row['user_id'];
-          echo "potato " . $row['ach_id'];
-
-          $achievementModel->unlockAchievement($testUserId, $row['ach_id']);
+          echo "achievement id: " . $row['ach_id'];
+        if(!empty($_POST)){
+          $achievementModel->unlockAchievement($testUserId, ($row['ach_id']));
           echo "Achievement unlocked!";
+        }
+                                               
         }
     }
 ?>

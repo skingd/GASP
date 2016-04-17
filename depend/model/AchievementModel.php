@@ -91,12 +91,13 @@ class AchievementModel{
 
      public function unlockAchievement($userId, $achId){
        $stmt = $this->db->prepare(
-           "INSERT INTO unlocked_achievements (user_id_ach, ach_id_unlocked)
+           "INSERT INTO unlocked_achievements (unlocked_achievements.user_id_ach, unlocked_achievements.ach_id_unlocked)
             VALUES(:user_id_ach, :ach_id_unlocked)"
        );
 
+         
        //Bindings
-       $stmt->bindParam(':user_id_ach', $userid);
+       $stmt->bindParam(':user_id_ach', $userId);
        $stmt->bindParam(':ach_id_unlocked', $achId);
 
        $stmt->execute();
