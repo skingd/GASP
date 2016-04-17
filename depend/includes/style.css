@@ -1,0 +1,10 @@
+#home ul {
+  padding: 0px;
+}
+
+#home ul li {
+  display: inline;
+  list-style: none;
+  float: left;
+  padding: 5em;
+}

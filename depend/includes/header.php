@@ -36,8 +36,11 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- Achievement Website CSS -->
+    <link href="depend/includes/style.css" rel="stylesheet">
+
 </head>
-    
+
 <?php
     include "depend/api/havenondemand/lib/hodclient.php";
     ?>
