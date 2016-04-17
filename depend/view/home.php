@@ -1,18 +1,13 @@
-<div id="home" class="container">
+<div class="thumbnails">
 <?php
-
-
-    print('<ul>');
-    foreach($lockedAchievementList as $row){
+   
+    /*foreach($lockedAchievementList as $row){
         include "achievement-view.php";
-    }
-    print('</ul>');
-    
-    print('<ul>');
+    }*/
+
     foreach($unlockedAchievementList as $row){
         include "achievement-view.php";
-    }
-    print('</ul>');
+    } 
 
 ?>
 </div>
