@@ -4,6 +4,9 @@
 
 <button class="btn btn-info" onclick="getLocation()">Scan Area</button>
 
+<p id="location"></p>
+<p id="newlocation"></p>
+
 <script>
 var currentLocation = document.getElementById("location");
 function getLocation() {
@@ -15,10 +18,16 @@ function getLocation() {
 }
 function showPosition(position) {
     currentLocation.innerHTML = "Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude; 
+    "<br>Longitude: " + position.coords.longitude;
+    
+    checkRadius(position.coords.latitude, position.coords.longitude);
 }
     
-function checkRadius(){
+function checkRadius(lat, long){
+    var command = "depend/check-proximity.php?lat=";
+    var second = "?long="; 
     
+   $("#newlocation").load("depend/check-proximity.php" , {lat:lat, long:long})
+    return false;
 }    
 </script>

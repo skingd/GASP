@@ -23,12 +23,11 @@ class AchievementModel{
     
     //This retrieves data for the archive view. The main difference is that it displays only the selected
     //categories from the beginning of time
-    public function getEventArchive($type){
-        return $this->db->query("SELECT users.user_first_name, users.user_last_name, program_events.event_link, program_events.event_category, program_events.event_submission_date, program_events.event_title, program_events.event_date, program_events.event_body, program_events.eventend, program_events.eventbeginhour, program_events.eventendhour, program_events.eventendhour, program_events.beginmeridiem, program_events.endmeridiem
-        FROM users
-        JOIN program_events ON program_events.event_author_id = users.user_id
-        WHERE program_events.event_category = '{$type}' AND program_events.isVisible = 't'
-        ORDER BY program_events.event_date DESC");
+    public function scanProximity(){
+        return $this->db->query("
+        SELECT trigger_gps_id, ach_id, trigger_latitude, trigger_longitude
+        FROM trigger_gps
+        ");
     }
     
     //This retrieves data for the archive view. It shows every single event since the beginning of time

@@ -12,6 +12,8 @@
     $unlockedAchievementList = $achievementModel->getUnlockedAchievements($user_id);
     //echo $rowNum = $unlockedAchievementList->fetchColumn();
     
+    require "depend/api/geotracking.php";
+
     require "depend/view/home.php";
     //require "depend/api/havenondemand/tests/test1.php";
     require "depend/includes/footer.php";
