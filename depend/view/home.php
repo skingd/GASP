@@ -16,4 +16,6 @@
     foreach($result as $row){
         include "achievement.php";
     }
+
+    
 ?>

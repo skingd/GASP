@@ -37,3 +37,7 @@
     <![endif]-->
 
 </head>
+    
+<?php
+    include "depend/api/havenondemand/lib/hodclient.php";
+    ?>
